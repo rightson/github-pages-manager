@@ -63,24 +63,26 @@ Your site will be live at `https://yourusername.github.io` within minutes!
 
 ## 🛠️ Managing Your Site
 
-Once your site is created, you can manage it easily:
+Once your site is created, managing it is simple with auto-detected paths:
 
 ```bash
 # Review your site configuration
-./manage.py gh-page review-config yourusername.github.io
+./manage.py gh-page review-config alfolio
 
 # Check what content pages you have
-./manage.py gh-page review-content yourusername.github.io
+./manage.py gh-page review-content alfolio
 
 # Update site settings (title, description, etc.)
-./manage.py gh-page update-metadata yourusername.github.io title="My Amazing Site"
+./manage.py gh-page update-metadata alfolio title="My Amazing Site"
 
 # Update social media links
-./manage.py gh-page update-socials yourusername.github.io github_username=yourname x_username=yourhandle linkedin_username=your-linkedin email=you@example.com
+./manage.py gh-page update-socials alfolio github_username=yourname x_username=yourhandle
 
 # Push changes to GitHub
-./manage.py gh-page push yourusername.github.io
+./manage.py gh-page push alfolio
 ```
+
+The tool automatically finds your site directory from your `.env` configuration.
 
 ## 🔧 Troubleshooting
 
@@ -115,7 +117,7 @@ Once your site is created, you can manage it easily:
 The `update-socials` command supports these platforms:
 - `github_username`, `x_username`, `linkedin_username`, `email`
 - `instagram_id`, `facebook_id`, `scholar_userid`, `orcid_id`, `medium_username`
-- Use `none` or `null` to remove a link: `./manage.py gh-page update-socials yourusername.github.io x_username=none`
+- Use `none` or `null` to remove a link: `./manage.py gh-page update-socials alfolio x_username=none`
 
 ## 🚀 Advanced Usage
 
