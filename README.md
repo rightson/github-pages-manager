@@ -75,6 +75,9 @@ Once your site is created, you can manage it easily:
 # Update site settings (title, description, etc.)
 ./manage.py gh-page update-metadata yourusername.github.io title="My Amazing Site"
 
+# Update social media links
+./manage.py gh-page update-socials yourusername.github.io github_username=yourname x_username=yourhandle linkedin_username=your-linkedin email=you@example.com
+
 # Push changes to GitHub
 ./manage.py gh-page push yourusername.github.io
 ```
@@ -103,8 +106,16 @@ Once your site is created, you can manage it easily:
 1. **Customize your site**: Edit `_config.yml` in your site directory
 2. **Add your photo**: Replace `assets/img/prof_pic.jpg`
 3. **Update your bio**: Edit `_pages/about.md`
-4. **Add publications**: Place BibTeX files in `_bibliography/`
-5. **Create blog posts**: Add Markdown files to `_posts/`
+4. **Update social links**: Use `update-socials` command (see Managing Your Site section)
+5. **Add publications**: Place BibTeX files in `_bibliography/`
+6. **Create blog posts**: Add Markdown files to `_posts/`
+
+### Social Media Configuration
+
+The `update-socials` command supports these platforms:
+- `github_username`, `x_username`, `linkedin_username`, `email`
+- `instagram_id`, `facebook_id`, `scholar_userid`, `orcid_id`, `medium_username`
+- Use `none` or `null` to remove a link: `./manage.py gh-page update-socials yourusername.github.io x_username=none`
 
 ## 🚀 Advanced Usage
 
