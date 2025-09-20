@@ -1,0 +1,1 @@
+"""GitHub Pages management package."""
