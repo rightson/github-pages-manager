@@ -1,6 +1,6 @@
 # GitHub Pages Manager
 
-Bootstrap your GitHub Pages site in minutes! This tool helps you set up professional academic portfolios and other Jekyll-based sites with zero configuration hassle.
+Bootstrap any GitHub Pages site in minutes! This tool helps you set up professional websites, portfolios, blogs, and documentation sites with zero configuration hassle.
 
 ## 🚀 Quick Start - Get Your Site Running
 
@@ -39,7 +39,7 @@ pip install python-dotenv PyYAML
 
 ### Step 5: Bootstrap Your Site
 ```bash
-# Creates a complete Al-folio academic portfolio
+# Creates a beautiful Al-folio portfolio site
 ./manage.py gh-page init alfolio --bundle
 
 # Follow the output instructions to push to GitHub
@@ -52,13 +52,14 @@ Your site will be live at `https://yourusername.github.io` within minutes!
 
 ## 📋 What You Get
 
-### Al-folio Academic Portfolio
-- **Beautiful Design**: Clean, professional academic portfolio
-- **Publications**: BibTeX integration for your papers
-- **Projects**: Showcase your research and code
+### Al-folio Portfolio Template
+- **Beautiful Design**: Clean, professional portfolio layout
+- **Publications**: BibTeX integration for papers and articles
+- **Projects**: Showcase your work and code repositories
 - **Blog**: Built-in Jekyll blog functionality
 - **Responsive**: Mobile-friendly design
 - **Customizable**: Easy to modify colors, fonts, and layout
+- **Perfect for**: Researchers, developers, designers, professionals
 
 ## 🛠️ Managing Your Site
 
@@ -122,10 +123,11 @@ Once your site is created, you can manage it easily:
 
 ## 🔮 Coming Soon
 
-- More templates (Hugo, plain Jekyll, etc.)
+- More templates (Hugo, plain Jekyll, documentation themes, etc.)
 - Interactive setup wizard
 - Automated dependency checking
 - Content migration tools
+- Support for custom themes and templates
 
 ---
 
