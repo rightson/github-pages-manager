@@ -10,37 +10,31 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 
 def show_usage():
-    print("Usage: manage.py <service> <action> <target> [options]\n")
+    print("Usage: manage.py <action> [options]\n")
     print("Examples:")
-    print("  manage.py gh-page init alfolio [--dir PATH] [--remote URL] [--branch NAME] [--bundle]")
-    print("  manage.py gh-page review-config alfolio")
-    print("  manage.py gh-page review-content alfolio")
-    print("  manage.py gh-page update-metadata alfolio key=value [key2=value2 ...]")
-    print("  manage.py gh-page update-socials alfolio github_username=rightson x_username=myhandle")
-    print("  manage.py gh-page push alfolio")
+    print("  manage.py init [--dir PATH] [--remote URL] [--branch NAME] [--bundle]")
+    print("  manage.py review-config")
+    print("  manage.py review-content")
+    print("  manage.py update-metadata key=value [key2=value2 ...]")
+    print("  manage.py update-socials github_username=rightson x_username=myhandle")
+    print("  manage.py push")
 
 
 def main():
-    if len(sys.argv) < 4 or sys.argv[1] in ("-h", "--help", "help"):
+    if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help", "help"):
         show_usage()
         return
 
-    service, action, target = sys.argv[1:4]
-    args = sys.argv[4:]
-
-    if service != "gh-page":
-        print(f"Unknown service: {service}")
-        show_usage()
-        sys.exit(1)
+    action = sys.argv[1]
+    args = sys.argv[2:]
 
     # Import operations module for non-init actions
     from gh_page import operations
     from gh_page.config import Config
 
-    # Determine target directory
+    # Use configured template and directory
+    target = Config.DEFAULT_TEMPLATE
     target_dir = Config.DEFAULT_TARGET_DIR
-    if target == "alfolio":
-        target_dir = "rightson.github.io"
 
     try:
         if action == "init":

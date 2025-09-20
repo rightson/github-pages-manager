@@ -21,6 +21,7 @@ class Config:
 
     DEFAULT_BRANCH = os.getenv('DEFAULT_BRANCH', 'main')
     DEFAULT_TARGET_DIR = os.getenv('DEFAULT_TARGET_DIR', 'rightson.github.io')
+    DEFAULT_TEMPLATE = os.getenv('DEFAULT_TEMPLATE', 'alfolio')
 
     @classmethod
     def get_repository_url(cls):

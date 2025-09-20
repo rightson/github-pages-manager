@@ -3,7 +3,7 @@
 ## GitHub Pages Management System
 
 ### manage.py
-Python-based management script with hierarchical command structure for GitHub Pages operations.
+Python-based management script for GitHub Pages operations with simplified command structure.
 
 **Structure:**
 - `manage.py` - Main launcher script
@@ -21,6 +21,7 @@ Settings are loaded from `.env` file (copy from `.env.example`):
 - `AUTHOR_NAME` - Author name for content
 - `DEFAULT_BRANCH` - Default git branch
 - `DEFAULT_TARGET_DIR` - Default target directory
+- `DEFAULT_TEMPLATE` - Default template (e.g., alfolio)
 
 **Dependencies:**
 - python3 (required)
@@ -31,21 +32,21 @@ Settings are loaded from `.env` file (copy from `.env.example`):
 
 **Usage:**
 ```bash
-# Initialize Al-folio template
-./manage.py gh-page init alfolio [options]
+# Initialize template (uses DEFAULT_TEMPLATE from .env)
+./manage.py init [options]
 
 # Review and manage site
-./manage.py gh-page review-config alfolio
-./manage.py gh-page review-content alfolio
+./manage.py review-config
+./manage.py review-content
 
 # Update site configuration (_config.yml)
-./manage.py gh-page update-metadata alfolio first_name=John last_name=Doe email=john@example.com
+./manage.py update-metadata first_name=John last_name=Doe email=john@example.com
 
 # Update social media links (_data/socials.yml)
-./manage.py gh-page update-socials alfolio github_username=rightson x_username=myhandle linkedin_username=john-doe email=john@example.com
+./manage.py update-socials github_username=rightson x_username=myhandle linkedin_username=john-doe email=john@example.com
 
 # Commit and push changes
-./manage.py gh-page push alfolio
+./manage.py push
 
 Options for init:
   --dir PATH       Destination directory
@@ -61,5 +62,5 @@ Social media keys supported:
 
 **Extensibility:**
 - Add new templates in `gh_page/` package
-- Add new services by extending `manage.py`
+- Configure different templates via `DEFAULT_TEMPLATE` in `.env`
 - Reusable operations in `gh_page/operations.py`

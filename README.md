@@ -40,7 +40,7 @@ pip install python-dotenv PyYAML
 ### Step 5: Bootstrap Your Site
 ```bash
 # Creates a beautiful Al-folio portfolio site
-./manage.py gh-page init alfolio --bundle
+./manage.py init --bundle
 
 # Follow the output instructions to push to GitHub
 cd yourusername.github.io
@@ -63,26 +63,26 @@ Your site will be live at `https://yourusername.github.io` within minutes!
 
 ## 🛠️ Managing Your Site
 
-Once your site is created, managing it is simple with auto-detected paths:
+Once your site is created, managing it is incredibly simple:
 
 ```bash
 # Review your site configuration
-./manage.py gh-page review-config alfolio
+./manage.py review-config
 
 # Check what content pages you have
-./manage.py gh-page review-content alfolio
+./manage.py review-content
 
 # Update site settings (title, description, etc.)
-./manage.py gh-page update-metadata alfolio title="My Amazing Site"
+./manage.py update-metadata title="My Amazing Site"
 
 # Update social media links
-./manage.py gh-page update-socials alfolio github_username=yourname x_username=yourhandle
+./manage.py update-socials github_username=yourname x_username=yourhandle
 
 # Push changes to GitHub
-./manage.py gh-page push alfolio
+./manage.py push
 ```
 
-The tool automatically finds your site directory from your `.env` configuration.
+Everything is auto-configured from your `.env` file - no repetitive typing needed!
 
 ## 🔧 Troubleshooting
 
@@ -117,21 +117,21 @@ The tool automatically finds your site directory from your `.env` configuration.
 The `update-socials` command supports these platforms:
 - `github_username`, `x_username`, `linkedin_username`, `email`
 - `instagram_id`, `facebook_id`, `scholar_userid`, `orcid_id`, `medium_username`
-- Use `none` or `null` to remove a link: `./manage.py gh-page update-socials alfolio x_username=none`
+- Use `none` or `null` to remove a link: `./manage.py update-socials x_username=none`
 
 ## 🚀 Advanced Usage
 
 ### Multiple Sites
 ```bash
 # Create different sites for different purposes
-./manage.py gh-page init alfolio --dir my-research-site
-./manage.py gh-page init alfolio --dir my-teaching-site
+./manage.py init --dir my-research-site
+./manage.py init --dir my-teaching-site
 ```
 
 ### Custom Configuration
 ```bash
 # Use different branch or remote
-./manage.py gh-page init alfolio --branch gh-pages --remote https://github.com/user/repo.git
+./manage.py init --branch gh-pages --remote https://github.com/user/repo.git
 ```
 
 ## 🔮 Coming Soon
