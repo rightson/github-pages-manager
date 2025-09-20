@@ -59,16 +59,73 @@ def update_site_metadata(target_dir, **kwargs):
     print(f"Updated {len(kwargs)} settings in _config.yml")
 
 
+def update_socials(target_dir, **kwargs):
+    """Update social media settings in _data/socials.yml."""
+    target_path = Path(target_dir)
+    socials_file = target_path / "_data" / "socials.yml"
+
+    if not socials_file.exists():
+        print(f"No socials.yml found at {socials_file}")
+        return
+
+    with open(socials_file) as f:
+        socials = yaml.safe_load(f) or {}
+
+    # Update social media settings
+    for key, value in kwargs.items():
+        if value.lower() in ('none', 'null', ''):
+            # Remove the key if set to none/null/empty
+            socials.pop(key, None)
+        else:
+            socials[key] = value
+
+    with open(socials_file, 'w') as f:
+        yaml.dump(socials, f, default_flow_style=False, allow_unicode=True)
+
+    print(f"Updated socials.yml with {len(kwargs)} setting(s)")
+
+    # Show what was updated
+    for key, value in kwargs.items():
+        if value.lower() in ('none', 'null', ''):
+            print(f"  Removed: {key}")
+        else:
+            print(f"  Set {key}: {value}")
+
+
 def git_push(target_dir, branch="main"):
     """Push repository to remote origin."""
     target_path = Path(target_dir)
 
+    if not target_path.exists():
+        print(f"Target directory '{target_dir}' does not exist")
+        return
+
     try:
+        # Add all changes first
+        subprocess.run(["git", "add", "."], cwd=target_path, check=True)
+
+        # Check if there are changes to commit
+        result = subprocess.run(["git", "status", "--porcelain"],
+                              cwd=target_path, capture_output=True, text=True)
+
+        if result.stdout.strip():
+            # There are changes, commit them
+            subprocess.run(["git", "commit", "-m", "Update site content"],
+                          cwd=target_path, check=True)
+            print("Committed changes")
+        else:
+            print("No changes to commit")
+
+        # Push to remote
         subprocess.run(["git", "push", "-u", "origin", branch],
                       cwd=target_path, check=True)
         print(f"Successfully pushed to origin/{branch}")
-    except subprocess.CalledProcessError:
-        print("Failed to push. Make sure remote is configured correctly.")
+    except subprocess.CalledProcessError as e:
+        print(f"Git operation failed: {e}")
+        print("Make sure:")
+        print("  1. Remote origin is configured")
+        print("  2. You have push permissions")
+        print("  3. Branch exists on remote")
 
 
 def setup_git_repo(target_path, branch="main", remote=None, commit_msg="Initial commit"):

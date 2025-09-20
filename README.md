@@ -1,4 +1,4 @@
-# Productivity Boost
+# GitHub Pages Manager
 
 Bootstrap your GitHub Pages site in minutes! This tool helps you set up professional academic portfolios and other Jekyll-based sites with zero configuration hassle.
 
@@ -6,8 +6,8 @@ Bootstrap your GitHub Pages site in minutes! This tool helps you set up professi
 
 ### Step 1: Clone This Repository
 ```bash
-git clone https://github.com/rightson/productivity-boost.git
-cd productivity-boost
+git clone https://github.com/rightson/github-pages-manager.git
+cd github-pages-manager
 ```
 
 ### Step 2: Configure Your Settings

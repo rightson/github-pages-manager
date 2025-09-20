@@ -1,9 +1,9 @@
 # Claude Code Information
 
-## Project Management System
+## GitHub Pages Management System
 
 ### manage.py
-Python-based management script with hierarchical command structure for productivity boost operations.
+Python-based management script with hierarchical command structure for GitHub Pages operations.
 
 **Structure:**
 - `manage.py` - Main launcher script
@@ -37,7 +37,14 @@ Settings are loaded from `.env` file (copy from `.env.example`):
 # Review and manage site
 ./manage.py gh-page review-config alfolio
 ./manage.py gh-page review-content alfolio
-./manage.py gh-page update-metadata alfolio key=value
+
+# Update site configuration (_config.yml)
+./manage.py gh-page update-metadata alfolio first_name=John last_name=Doe email=john@example.com
+
+# Update social media links (_data/socials.yml)
+./manage.py gh-page update-socials alfolio github_username=rightson x_username=myhandle linkedin_username=john-doe email=john@example.com
+
+# Commit and push changes
 ./manage.py gh-page push alfolio
 
 Options for init:
@@ -45,6 +52,11 @@ Options for init:
   --remote URL     Git remote URL
   --branch NAME    Default branch name
   --bundle         Run bundle install after setup
+
+Social media keys supported:
+  github_username, x_username, linkedin_username, email, instagram_id,
+  facebook_id, scholar_userid, orcid_id, medium_username, and more.
+  Use 'none' or 'null' to remove a social link.
 ```
 
 **Extensibility:**
